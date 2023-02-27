@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .welcome-message {
+            animation: slide-in-blurred-left 3s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+        }
+        @keyframes slide-in-blurred-left {
+            0% {
+                transform: translateX(1000px) scale(3);
+                filter: blur(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                filter: blur(0);
+                opacity: 1;
+            }
+        }
+        .welcome-message span {
+            animation: color-change 7s infinite;
+        }
+        @keyframes color-change {
+            0% {
+                color: blue;
+            }
+            20% {
+                color: red;
+            }
+            40% {
+                color: yellow;
+            }
+            60% {
+                color: green;
+            }
+            70% {
+                color: orangered;
+            }
+            80% {
+                color:violet;
+            }
+        }
+    </style>
+    <title>Welcome Page</title>
+</head>
+<body class="bg-gray-900 text-white text-center">
+<div class="container my-5">
+    <!--h1 class="text-4xl font-bold mb-5 welcome-message"></h1-->
+    <h1 class="text-5xl font-bold mb-5 welcome-message">
+        <span>Bienvenue chez Renaissance!</span>
+        <br>
+        <span>Welcome to Renaissance!</span>
+    </h1>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/products}" style="color: NAVY;font-size: 23px; font-family: 'Arial Black';
+                    padding: 100px ;padding-top: 0%;padding-bottom: 0%">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/reservations}" style="color: NAVY;font-size: 23px; font-family: 'Arial Black';
+                    padding: 100px;padding-top: 0%;padding-bottom: 0%">Reservations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/clients}" style="color: NAVY;font-size: 23px; font-family: 'Arial Black';
+                    padding: 100px;padding-top: 0%;padding-bottom: 0%">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/orders}" style="color: NAVY;font-size: 23px; font-family: 'Arial Black';
+                    padding: 100px;padding-top: 0%;padding-bottom: 0%">Orders</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <style>
+        .nav-link:hover {
+            color: white !important;
+            font-size: 1.45em !important;
+        }
+    </style>
+
+    <br>
+    <h1 class="text-2xl font-bold mb-5 " style="color: #FFC107;font-family: 'Arial Black'">
+        <div class="col-sm-2">
+            <a th:href = "@{/clients/new}" class="btn btn-outline-danger float-end">Add Client</a>
+        </div>
+        <span>List Of clients</span>
+    </h1>
+
+    <table class="table" style=" background-color:darkblue ;color: white">
+        <thead class="thead-success">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${listClients}">
+            <th scope="row" th:text="${client.getId}"></th>
+            <td th:text="${client.getFirstName}"></td>
+            <td th:text="${client.getLastName}"></td>
+            <td th:text="${client.getEmail}"></td>
+            <td th:text="${client.getTel}"></td>
+            <td>
+                <div class="d-flex justify-content-around">
+                    <a class="btn btn-primary" !important th:href="@{'/clients/getForUpdate/ '+ ${client.getId}}">Edit</a>
+                    <a class="btn btn-danger" !important th:href="@{'/clients/delete/' + ${client.getId}}" method ="DELETE">Delete</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

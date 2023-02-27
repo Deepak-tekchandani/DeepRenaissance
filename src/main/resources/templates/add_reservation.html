@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Management System</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center bg-primary text-light p-3">Add New Reservation</h1>
+    <hr />
+    <h2 class="text-success">New Reservation</h2>
+
+    <form action="#" th:action="@{/reservations/save}" th:object="${reservation}" method="POST">
+        <div class="mb-4 col-4">
+            <label th:for="id">Reservation Id</label>
+            <input type="text" th:field="*{id}" class="form-control" />
+            <span class="text-danger" th:errors="*{id}"></span>
+        </div>
+        <div class="mb-4 col-4">
+            <label th:for="startDate">Start Date</label>
+            <input type="text" th:field="*{startDate}" class="form-control" />
+            <span class="text-danger" th:errors="*{startDate}"></span>
+        </div>
+        <div class="mb-4 col-4">
+            <label th:for="endDate">End Date</label>
+            <input type="text" th:field="*{endDate}" class="form-control" />
+            <span class="text-danger" th:errors="*{endDate}"></span>
+        </div>
+        <div class="mb-4 col-4">
+            <label th:for="client">Select Client</label>
+            <select class="form-control" th:field="*{client}">
+                <option th:value="0">Select Client</option>
+                <option th:each="cn : ${clientsList}"
+                        th:value="${cn.id}"
+                        th:text="${cn.firstName}" th:selected=${cn==reservation.client}></option>
+            </select>
+            <span class="text-danger" th:errors="*{client}"></span>
+        </div>
+<!--        <div class="mb-4 col-4">-->
+<!--            <label th:for="product">Select Product</label>-->
+<!--            <select class="form-control" th:field="*{product}">-->
+<!--                <option th:value="0">Select Product</option>-->
+<!--                <option th:each="pn : ${productsList}"-->
+<!--                        th:value="${pn.id}"-->
+<!--                        th:text="${pn.name}" th:selected=${pn==reservation.product}></option>-->
+<!--            </select>-->
+<!--            <span class="text-danger" th:errors="*{reservation}"></span>-->
+<!--        </div>-->
+        <div>
+            <button type="submit" class="btn btn-primary col-2">Save</button>
+            <a th:href = "@{/reservations}" class="btn btn-danger col-2">Cancel</a>
+        </div>
+    </form>
+
+    <hr />
+    <a th:href = "@{/reservations}" class="btn btn-secondary">Back</a>
+</div>
+</body>
+</html>
