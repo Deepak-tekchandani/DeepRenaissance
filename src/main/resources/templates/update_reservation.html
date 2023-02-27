@@ -33,12 +33,12 @@ and open the template in the editor.
         <input type="hidden" th:field="*{id}" />
         <div class="mb-4 col-4">
             <label th:for="startDate">Start Date</label>
-            <input type="text" th:field="*{startDate}" class="form-control" />
+            <input type="date" th:field="*{startDate}" class="form-control" />
             <span class="text-danger" th:errors="*{startDate}"></span>
         </div>
         <div class="mb-4 col-4">
             <label th:for="endDate">End Date</label>
-            <input type="text" th:field="*{endDate}" class="form-control" />
+            <input type="date" th:field="*{endDate}" class="form-control" />
             <span class="text-danger" th:errors="*{endDate}"></span>
         </div>
         <div class="mb-4 col-4">

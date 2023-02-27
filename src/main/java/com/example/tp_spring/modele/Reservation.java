@@ -24,15 +24,15 @@ public class Reservation {
     private Product product;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private String startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private String endDate;
 
     public Reservation() {
     }
 
-    public Reservation(Long id, Client client, Product product, Date startDate, Date endDate) {
+    public Reservation(Long id, Client client, Product product, String startDate, String endDate) {
         this.id = id;
         this.client = client;
         this.product = product;
@@ -40,7 +40,7 @@ public class Reservation {
         this.endDate = endDate;
     }
 
-    public Reservation(Date startDate, Date endDate) {
+    public Reservation(String startDate, String endDate) {
         this.startDate = startDate;
         this.endDate = endDate;
 
@@ -71,19 +71,19 @@ public class Reservation {
         this.product = product;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
