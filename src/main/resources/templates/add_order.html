@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hotel Management System</title>
+    <title></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -15,9 +15,9 @@ and open the template in the editor.
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center bg-primary text-light p-3">Add New Client</h1>
+    <h1 class="text-center bg-primary text-light p-3">Add New Order</h1>
     <hr />
-    <h2 class="text-success">New Room</h2>
+    <h2 class="text-success">New Order</h2>
 
     <form action="#" th:action="@{/orders/save}" th:object="${order}" method="POST">
         <div class="mb-4 col-4">
@@ -42,12 +42,12 @@ and open the template in the editor.
         </div>
         <div>
             <button type="submit" class="btn btn-primary col-2">Save</button>
-            <a th:href = "@{/clients}" class="btn btn-danger col-2">Cancel</a>
+            <a th:href = "@{/orders}" class="btn btn-danger col-2">Cancel</a>
         </div>
     </form>
 
     <hr />
-    <a th:href = "@{/clients}" class="btn btn-secondary">Back</a>
+    <a th:href = "@{/orders}" class="btn btn-secondary">Back</a>
 </div>
 </body>
 </html>
