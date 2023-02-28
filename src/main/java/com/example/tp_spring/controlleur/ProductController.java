@@ -34,9 +34,32 @@ public class ProductController {
     }
 
     // Renvoyer le produit correspondant à l'ID donné
-    @GetMapping("/products/{id}")
-    public Product getProductById(@PathVariable Long id) {
-        return productService.get(id);
+//    @GetMapping("/products")
+//    public String getProductById(@RequestParam(name="pID", defaultValue="") Long id , Model model) {
+//        Product product = productService.get(id);
+//        if (product != null) {
+//            model.addAttribute("listProducts", product);
+//            System.out.println("==============By ID ==============");
+//            return "product";
+//        }
+//        return "product";
+//    }
+
+    @GetMapping("/products/filter1")
+    public String getBYId(@RequestParam(name="pID", defaultValue="") Long id , Model model) {
+        try {
+            Product product = productService.get(id);
+            if (product != null) {
+                model.addAttribute("listProducts", product);
+                model.addAttribute("filter1", id);
+                System.out.println("==============By ID ==============");
+//        return clientService.get(id);
+                return "product";
+            }
+        }catch (Exception e){
+            return "product";
+        }
+        return "product";
     }
 
     @GetMapping("/products/new")
@@ -91,9 +114,13 @@ public class ProductController {
     }
 
     // Renvoyer le produit correspondant au nom donné (exact match)
-    @GetMapping("/products/name/{name}")
-    public List<Product> getProductByName(@PathVariable String name) {
-        return productService.getProductByName(name);
+    @GetMapping("/products/name/filter2")
+    public String getByLastName(@RequestParam(name="name", defaultValue="") String name, Model model) {
+
+        model.addAttribute("listProducts", productService.getProductByName(name));
+        model.addAttribute("filter2", name);
+        System.out.println("===========Find By Name==========");
+        return "product";
     }
 
     // Renvoyer la liste de produits contenant le nom donné

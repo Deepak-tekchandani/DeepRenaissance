@@ -60,6 +60,21 @@ public class OrderController {
 
       return orderService.get(id);
     }
+    @GetMapping("/orders/filter1")
+    public String getBYId(@RequestParam(name="oID", defaultValue="") Long id , Model model) {
+        try {
+            Order order = orderService.get(id);
+            if (order != null) {
+                model.addAttribute("listOrder",order);
+                model.addAttribute("filter1", id);
+                System.out.println("==============By ID ==============");
+                return "order";
+            }
+        }catch (Exception e){
+            return "order";
+        }
+        return "order";
+    }
     @GetMapping("/orders/getForUpdate/{id}")
     public String getForUpdate(@PathVariable Long id ,Model model) {
 

@@ -88,6 +88,31 @@
 
     <br>
     <h1 class="text-2xl font-bold mb-5 " style="color: #FFC107;font-family: 'Arial Black'">
+        <div class="row">
+            <div class="col">
+                <form th:action="@{/clients/filter1}" method="get">
+                    <div class="form-group">
+                        <label>Client ID:</label>
+                            <input type="text" name="cID" th:value="${filter1}"/>
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <form th:action="@{/clients/lastname/filter2}" method="get">
+                    <div class="form-group">
+                        <label>Client LastName :</label>
+                        <input type="text" name="lastName" th:value="${filter2}"/>
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <a th:href = "@{/clients}" class="btn btn-light btn-outline-dark">Erase filters</a>
+            </div>
+        </div>
         <div class="col-sm-2">
             <a th:href = "@{/clients/new}" class="btn btn-outline-danger float-end">Add Client</a>
         </div>

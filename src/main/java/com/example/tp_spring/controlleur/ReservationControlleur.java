@@ -61,6 +61,22 @@ public class ReservationControlleur {
     public Reservation get(@PathVariable Long id) {
         return reservationService.get(id);
     }
+    @GetMapping("/reservations/filter1")
+    public String getBYId(@RequestParam(name="rID", defaultValue="") Long id , Model model) {
+        try {
+            Reservation reservation = reservationService.get(id);
+            if (reservation != null) {
+                model.addAttribute("listReservations", reservation);
+                model.addAttribute("filter1", id);
+                System.out.println("==============By ID ==============");
+//        return clientService.get(id);
+                return "reservations";
+            }
+        }catch (Exception e){
+            return "reservations";
+        }
+        return "reservations";
+    }
 
     @GetMapping("/reservations/getForUpdate/{id}")
     public String getForUpdate(@PathVariable Long id,Model model) {

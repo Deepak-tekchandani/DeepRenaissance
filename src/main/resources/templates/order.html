@@ -87,6 +87,22 @@
 
     <br>
     <h1 class="text-2xl font-bold mb-5 " style="color: #FFC107;font-family: 'Arial Black'">
+        <div class="row">
+            <div class="col">
+                <form th:action="@{/orders/filter1}" method="get">
+                    <div class="form-group">
+                        <label>Order ID:</label>
+                        <input type="text" name="oID" th:value="${filter1}"/>
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <a th:href = "@{/orders}" class="btn btn-light btn-outline-dark">Erase filters</a>
+            </div>
+        </div>
         <div class="col-sm-2">
             <a th:href = "@{/orders/new}" class="btn btn-outline-danger float-end">Add Order</a>
         </div>

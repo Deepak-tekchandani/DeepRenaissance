@@ -31,6 +31,22 @@ public class ClientController {
     public Client get(@PathVariable Long id , Model model) {
         return clientService.get(id);
     }
+    @GetMapping("/clients/filter1")
+    public String getBYId(@RequestParam(name="cID", defaultValue="") Long id , Model model) {
+        try {
+            Client client = clientService.get(id);
+            if (client != null) {
+                model.addAttribute("listClients",client );
+                model.addAttribute("filter1", id);
+                System.out.println("==============By ID ==============");
+//        return clientService.get(id);
+                return "client";
+            }
+        }catch (Exception e){
+            return "client";
+        }
+        return "client";
+    }
     @GetMapping("/clients/getForUpdate/{id}")
     public String getForUpdate(@PathVariable Long id , Model model) {
 
@@ -87,8 +103,14 @@ public class ClientController {
         return clientService.findByLastNameAndEmail(lastName, email);
     }
 
-    @GetMapping("/clients/lastname/{lastName}")
-    public List<Client> getByLastName(@PathVariable String lastName) {
-        return clientService.findByLastName(lastName);
+    @GetMapping("/clients/lastname/filter2")
+    public String getByLastName(@RequestParam(name="lastName", defaultValue="") String lastName, Model model) {
+
+//        return clientService.findByLastName(lastName);
+
+        model.addAttribute("listClients", clientService.findByLastName(lastName));
+        model.addAttribute("filter2", lastName);
+        System.out.println("===========Find By Name==========");
+        return "client";
     }
 }
