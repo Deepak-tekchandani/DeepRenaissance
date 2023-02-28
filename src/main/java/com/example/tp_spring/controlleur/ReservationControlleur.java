@@ -68,7 +68,6 @@ public class ReservationControlleur {
             if (reservation != null) {
                 model.addAttribute("listReservations", reservation);
                 model.addAttribute("filter1", id);
-                System.out.println("==============By ID ==============");
 //        return clientService.get(id);
                 return "reservations";
             }

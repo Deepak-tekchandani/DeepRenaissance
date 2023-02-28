@@ -38,7 +38,6 @@ public class ClientController {
             if (client != null) {
                 model.addAttribute("listClients",client );
                 model.addAttribute("filter1", id);
-                System.out.println("==============By ID ==============");
 //        return clientService.get(id);
                 return "client";
             }
@@ -110,7 +109,6 @@ public class ClientController {
 
         model.addAttribute("listClients", clientService.findByLastName(lastName));
         model.addAttribute("filter2", lastName);
-        System.out.println("===========Find By Name==========");
         return "client";
     }
 }

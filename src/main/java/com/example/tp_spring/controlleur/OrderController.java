@@ -67,7 +67,6 @@ public class OrderController {
             if (order != null) {
                 model.addAttribute("listOrder",order);
                 model.addAttribute("filter1", id);
-                System.out.println("==============By ID ==============");
                 return "order";
             }
         }catch (Exception e){

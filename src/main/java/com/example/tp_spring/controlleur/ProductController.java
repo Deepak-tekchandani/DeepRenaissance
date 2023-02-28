@@ -52,7 +52,6 @@ public class ProductController {
             if (product != null) {
                 model.addAttribute("listProducts", product);
                 model.addAttribute("filter1", id);
-                System.out.println("==============By ID ==============");
 //        return clientService.get(id);
                 return "product";
             }
@@ -119,7 +118,6 @@ public class ProductController {
 
         model.addAttribute("listProducts", productService.getProductByName(name));
         model.addAttribute("filter2", name);
-        System.out.println("===========Find By Name==========");
         return "product";
     }
 
